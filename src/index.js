@@ -22,7 +22,7 @@ class Sorter {
   }
 
   sort(indices) {
-    var sortmas = [];
+  /*  var sortmas = [];
     var index = [];
     for (var k = 0; k < indices.length; k++)
       index.push(indices[k]);//Массив Index заполнится индексами, которые нужно сортировать
@@ -43,7 +43,18 @@ class Sorter {
         if (i === index[k]){
           this.sortermas[i] = sortmas[k];
         }
-      }
+      }*/
+      let compareNumeric = (a,b) => a-b;
+    indices.sort(compareNumeric);
+    var pseudo = [];
+    for(let i = 0; i<indices.length; i++){
+      pseudo.push(this.sortermas[indices[i]]);
+    }
+    pseudo.sort(this.sortermas.compare);
+
+    for(let i = 0; i<indices.length; i++){
+      this.sortermas.splice(indices[i], 1, pseudo[i]);
+    }
 
   }
 
