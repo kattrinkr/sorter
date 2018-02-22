@@ -1,7 +1,8 @@
 class Sorter {
   constructor() {
     this.sortermas = [];
-    this.CompareFunc = function(a,b) {return a-b};
+    this.CompareFunc;
+    this.NewComp = 0;
 // Создаём экземпляр класса Sorter
   }
 
@@ -22,6 +23,7 @@ class Sorter {
   }
 
   sort(indices) {
+
     var sortmas = [];
     var index = [];
     for (var k = 0; k < indices.length; k++)
@@ -38,6 +40,12 @@ class Sorter {
           index[i+1] = a;
         }//Сортировка индексов
 
+    if (this.NewComp === 1){
+    sortmas.sort(this.CompareFunc)
+
+    }
+    else{
+
     for (var j = 0; j <= indices.length-1; j++)
       for (var i = 0; i <= (indices.length-1-j); i++)
         if (sortmas[i] > sortmas[i+1]){
@@ -45,7 +53,7 @@ class Sorter {
           sortmas[i] = sortmas[i+1];
           sortmas[i+1] = a;
         }// Сортировка элементов массива
-
+    }
     for (var i = 0; i < this.sortermas.length; i++)//Меняю отсортированные значения в исходном массиве
       for (var k = 0; k < index.length; k++){
         if (i === index[k]){
@@ -56,7 +64,9 @@ class Sorter {
   }
 
   setComparator(compareFunction) {
-    this.CompareFunc = compareFunction;//Сравнение по свойству или строкам
+    this.CompareFunc = compareFunction;
+    this.NewComp = 1;
+    //Сравнение по свойству или строкам
   }
 }
 
