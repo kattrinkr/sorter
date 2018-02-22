@@ -38,9 +38,9 @@ class Sorter {
           index[i+1] = a;
         }//Сортировка индексов
 
-    for (var j = 0; j < indices.length-1; j++)
-      for (var i = 0; i < (indices.length-1-j); i++)
-        if (sortmas[j] > sortmas[j+1]){
+    for (var j = 0; j <= indices.length-1; j++)
+      for (var i = 0; i <= (indices.length-1-j); i++)
+        if (sortmas[i] > sortmas[i+1]){
           var a = sortmas[i];
           sortmas[i] = sortmas[i+1];
           sortmas[i+1] = a;
